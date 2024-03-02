@@ -1,1 +1,1 @@
-# playwright-ts-api-pom
+# playwright-ts-web-examples
