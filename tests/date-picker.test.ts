@@ -3,7 +3,7 @@ import moment from "moment";
 
 test("date picker using moment", async ({ page }) => {
   await page.goto("https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo");
-  await selectDate(14, "March 2025");
+  await selectDate(10, "March 2025");
 
   async function selectDate(date: number, monthYear: string) {
     const mmYYYY = page.locator("//*[@class='datepicker-switch']").nth(0);
