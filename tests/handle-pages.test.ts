@@ -11,7 +11,7 @@ test("handle multiple pages", async ({ context }) => {
   const newTab = await pagePromise;
   await newTab.waitForLoadState();
 
-  // Assertion on new tab
+  // Assertions on new tab
   await expect(newTab).toHaveURL("https://demoqa.com/sample");
   await expect(newTab.locator("//h1[@id='sampleHeading']")).toHaveText("This is a sample page");
   await page.waitForTimeout(5000);
