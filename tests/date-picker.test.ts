@@ -1,6 +1,13 @@
 import { test, expect } from "@playwright/test";
 import moment from "moment";
 
+test("calendar input", async ({ page }) => {
+  await page.goto("https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo");
+  let birthday = "2001-02-11";
+  await page.locator("//*[@id='birthday']").fill(birthday);
+  await page.waitForTimeout(5000);
+});
+
 test("date picker using moment", async ({ page }) => {
   await page.goto("https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo");
   await selectDate(10, "March 2025");
