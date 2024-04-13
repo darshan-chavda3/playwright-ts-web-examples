@@ -7,6 +7,16 @@ test("iframe test", async ({ page }) => {
   await frame0.fill("Welcome to playwright automated text");
 });
 
+test.only("iframe test form", async ({ page }) => {
+  await page.goto("https://commitquality.com/practice-iframe");
+  const frame = page.frameLocator("//*[@title='Products']");
+  await frame.locator("//*[@data-testid='navbar-addproduct']").click();
+  await frame.locator("//*[@data-testid='product-textbox']").fill("Playwright tool");
+  await frame.locator("//*[@data-testid='price-textbox']").fill("150");
+  await frame.locator("//*[@data-testid='date-stocked']").click();
+  await frame.locator("//*[@data-testid='date-stocked']").fill("20-12-2024");
+});
+
 test("iframe inside frame", async ({ page }) => {
   await page.goto("https://ui.vision/demo/webtest/frames/");
   const mainFrame = page.frameLocator("//*[@src='frame_3.html']");
