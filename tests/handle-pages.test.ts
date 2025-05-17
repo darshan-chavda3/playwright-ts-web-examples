@@ -36,3 +36,22 @@ test("handle new page without context", async ({ page }) => {
   await newTab.close();
   await page.waitForTimeout(5000);
 });
+
+test.only("Open and manage multiple pages", async ({ context }) => {
+  // Setup page1
+  const page1 = await context.newPage();
+  await page1.goto("https://demoqa.com/automation-practice-form");
+  await page1.waitForLoadState("load")
+  await expect(page1.locator("#firstName")).toBeVisible({ timeout: 5000 });
+
+  // Setup Page2
+  const page2 = await context.newPage();
+  await page2.goto("https://demoqa.com/login");
+  await page1.waitForLoadState("load")
+  await expect(page2.locator("#userName")).toBeVisible({ timeout: 5000 });
+
+  // Navigate back to Page1
+  await page1.bringToFront();
+  await expect(page1).toHaveURL("https://demoqa.com/automation-practice-form");
+  await expect(page1.locator("#firstName")).toBeVisible({ timeout: 5000 });
+});
